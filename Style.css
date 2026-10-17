@@ -1,0 +1,192 @@
+
+/* =====================================
+   RACING GAME - COMPLETE NEW DESIGN
+   Compatible with existing HTML and JS
+===================================== */
+
+* {
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+}
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    font-family: Arial, Helvetica, sans-serif;
+    background: #10151d;
+    color: white;
+    user-select: none;
+}
+
+/* GAME ROAD */
+#game {
+    position: relative;
+    width: 300px;
+    height: 100vh;
+    max-height: 700px;
+    margin: 0 auto;
+    overflow: hidden;
+    isolation: isolate;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent 0%,
+            rgba(255,255,255,0.025) 48%,
+            transparent 100%
+        ),
+        repeating-linear-gradient(
+            0deg,
+            transparent 0px,
+            transparent 48px,
+            rgba(255,255,255,0.018) 49px,
+            transparent 50px
+        ),
+        linear-gradient(
+            90deg,
+            #383f48,
+            #292f37 18%,
+            #343b44 50%,
+            #292f37 82%,
+            #383f48
+        );
+
+    border-left: 5px solid #f5f5f5;
+    border-right: 5px solid #f5f5f5;
+
+    box-shadow:
+        0 0 0 3px #c51d2a,
+        0 0 30px rgba(0,0,0,0.7);
+}
+
+/* ROAD LINES */
+.line {
+    position: absolute;
+    left: 146px;
+    width: 8px;
+    height: 80px;
+    background: #f5f7fa;
+    border-radius: 3px;
+
+    box-shadow: 0 0 5px rgba(255,255,255,0.35);
+
+    animation: roadMove 0.5s linear infinite;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.line1 { top: 0; }
+.line2 { top: 160px; }
+.line3 { top: 320px; }
+.line4 { top: 480px; }
+
+@keyframes roadMove {
+    from { transform: translateY(0); }
+    to   { transform: translateY(160px); }
+}
+
+/* PLAYER SPORTS CAR */
+#car {
+    position: absolute;
+    width: 50px;
+    height: 80px;
+    bottom: 60px;
+    left: 125px;
+    z-index: 5;
+
+    background: linear-gradient(
+        90deg,
+        #720000 0%,
+        #d90000 12%,
+        #ff2929 32%,
+        #ff6565 48%,
+        #ed1010 68%,
+        #a00000 88%,
+        #570000 100%
+    );
+
+    border: 2px solid #650000;
+    border-radius: 14px 14px 10px 10px;
+
+    box-shadow:
+        inset 0 0 5px rgba(255,180,180,0.8),
+        inset 5px 0 5px rgba(0,0,0,0.18),
+        0 5px 8px rgba(0,0,0,0.6);
+}
+
+/* PLAYER WINDSHIELD */
+#car::before {
+    content: "";
+    position: absolute;
+    top: 13px;
+    left: 7px;
+    width: 32px;
+    height: 24px;
+
+    background: linear-gradient(
+        135deg,
+        #baf3ff 0%,
+        #2a779a 25%,
+        #102b42 60%,
+        #030a13 100%
+    );
+
+    border: 2px solid #242a30;
+    border-radius: 8px 8px 5px 5px;
+
+    box-shadow: inset 0 2px 3px rgba(255,255,255,0.65);
+}
+
+/* PLAYER STRIPES AND REAR LIGHTS */
+#car::after {
+    content: "";
+    position: absolute;
+    left: 21px;
+    top: 40px;
+    width: 4px;
+    height: 18px;
+
+    background: #fff2d9;
+    border-radius: 2px;
+
+    box-shadow:
+        -16px 29px 0 1px #ff3030,
+        16px 29px 0 1px #ff3030,
+        -16px 29px 4px 2px rgba(255,0,0,0.5),
+        16px 29px 4px 2px rgba(255,0,0,0.5);
+}
+
+/* ENEMY SPORTS CAR */
+#enemy {
+    position: absolute;
+    width: 50px;
+    height: 80px;
+    top: -150px;
+    left: 20px;
+    z-index: 4;
+
+    background: linear-gradient(
+        90deg,
+        #00265c 0%,
+        #005bc9 18%,
+        #168bff 40%,
+        #62c9ff 50%,
+        #0873e4 70%,
+        #00336f 100%
+    );
+
+    border: 2px solid #00234e;
+    border-radius: 14px 14px 10px 10px;
+
+    box-shadow:
+        inset 0 0 5px rgba(180,230,255,0.8),
+        0 5px 8px rgba(0,0,0,0.55);
+}
+
+/* ENEMY WINDSHIELD */
+#enemy::before {
+    content: "
